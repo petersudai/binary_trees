@@ -25,7 +25,7 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first, const binary_tr
 				return ((binary_tree_t *)temp1);
 			temp2 = temp2->parent;
 		}
-		tempt1 = temp1->parent;
+		temp1 = temp1->parent;
 	}
 	return (NULL);
 }
