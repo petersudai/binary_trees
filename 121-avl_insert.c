@@ -50,7 +50,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 	else
 		return (NULL);
 
-	balance_tree(tree, node);
+	binary_tree_balance(*tree);
 
 	return (node);
 }
