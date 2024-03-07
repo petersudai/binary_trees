@@ -33,7 +33,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 			node = (*tree)->left;
 		}
 		else
-			node = avl_insert(&((*tree)->), value);
+			node = avl_insert(&((*tree)->left), value);
 	}
 	else if (value > (*tree)->n)
 	{
@@ -45,7 +45,7 @@ avl_t *avl_insert(avl_t **tree, int value)
 			node = (*tree)->right;
 		}
 		else
-			node = avl_insert(&((*tree)->right), valuue);
+			node = avl_insert(&((*tree)->right), value);
 	}
 	else
 		return (NULL);
