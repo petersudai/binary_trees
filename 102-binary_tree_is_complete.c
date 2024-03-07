@@ -50,8 +50,7 @@ size_t binary_tree_count(const binary_tree_t *tree)
  */
 int binary_tree_is_complete(const binary_tree_t *tree)
 {
-        if (tree == NULL)
-                return (0);
-
-        return (binary_tree_is_complete_recursive(tree, 0, binary_tree_count(tree)));
+	if (tree == NULL)
+		return (0);
+	return (binary_tree_is_complete_recursive(tree, 0, binary_tree_count(tree)));
 }
