@@ -8,7 +8,7 @@
  * Return: A pointer to the new root node of tree after removing the desired value
  */
 
-bst_t *bst_rremove(bst_t *root, int value)
+bst_t *bst_remove(bst_t *root, int value)
 {
 	if (root == NULL)
 		return (NULL);
