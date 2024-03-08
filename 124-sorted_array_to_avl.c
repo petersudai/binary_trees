@@ -19,7 +19,6 @@ avl_t *create_avl_node(int value)
 		new_node->left = NULL;
 		new_node->right = NULL;
 		new_node->parent = NULL;
-		new_node->height = 1;
 	}
 	return (new_node);
 }
