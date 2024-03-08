@@ -23,7 +23,6 @@ avl_t *array_to_avl(int *array, size_t size)
 	{
 		if (avl_insert(&root, array[i]) == NULL)
 		{
-			binary_tree_delete(root);
 			return (NULL);
 		}
 	}
