@@ -21,8 +21,11 @@ avl_t *array_to_avl(int *array, size_t size)
 
 	for (i = 0; i < size; i++)
 	{
-		if (avl_insert(&root, array[i]) == NULL)
+		if (binary_tree_search(root, array[i]) == NULL)
+		{
+			if (avl_insert(&root, array[i]) == NULL)
 				return (NULL);
+		}
 	}
 	return (root);
 }
