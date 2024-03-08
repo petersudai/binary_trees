@@ -8,10 +8,17 @@
  * Return: Pointer to the new root node of tree
  */
 
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 avl_t *avl_remove(avl_t *root, int value)
 {
+	avl_t *temp;
+
 	if (root == NULL)
 		return (NULL);
+
+	int balance;
+
 	if (value < root->n)
 		root->left = avl_remove(root->left, value);
 	else if (value > root->n)
@@ -20,7 +27,7 @@ avl_t *avl_remove(avl_t *root, int value)
 	{
 		if (root->left == NULL || root->right == NULL)
 		{
-			avl_t *temp = root->left ? root->left : root->right;
+			temp = root->left ? root->left : root->right;
 			if (temp == NULL)
 			{
 				temp = root;
@@ -32,32 +39,32 @@ avl_t *avl_remove(avl_t *root, int value)
 		}
 		else
 		{
-			avl_t *temp = root->right;
+			temp = root->right;
 			while (temp->left != NULL)
 				temp = temp->left;
 			root->n = temp->n;
-			rooot->right = avl_remove(root->right, temp->n);
+			root->right = avl_remove(root->right, temp->n);
 		}
 	}
 	if (root == NULL)
 		return (NULL);
-	root->height = 1 + MAX(avl_height(root->left), avl_height(root->right));
-	int balance;
+	root->height = 1 + MAX(binary_tree_height(root->left), binary_tree_height(root->right));
 	
-	balance = avl_balance(root);
-	if (balance > 1 && avl_balance(root->left) >= 0)
-		return (avl_rotate_right(root));
-	if (balance > && avl_balance(root->left) < 0)
+	balance = binary_tree_balance(root);
+
+	if (balance > 1 && binary_tree_balance(root->left) >= 0)
+		return (binary_tree_rotate_right(root));
+	if (balance > 1 && binary_tree_balance(root->left) < 0)
 	{
-		root->left = avl_rotate_left(root->left);
-		return (avl_rotate_right(root));
+		root->left = binary_tree_rotate_left(root->left);
+		return (binary_tree_rotate_right(root));
 	}
-	if (balance < -1 && avl_balance(root->right) <= 0)
-		return (avl_rotate_left(root));
-	if (balance < -1 && avl_balance(root->right) > 0)
+	if (balance < -1 && binary_tree_balance(root->right) <= 0)
+		return (binary_tree_rotate_left(root));
+	if (balance < -1 && binary_tree_balance(root->right) > 0)
 	{
-		root->right = avl_rotate_right(root->right);
-		return (avl_rotate_left(root));
+		root->right = binary_tree_rotate_right(root->right);
+		return (binary_tree_rotate_left(root));
 	}
 	return (root);
 }
